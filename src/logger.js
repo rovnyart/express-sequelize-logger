@@ -31,10 +31,13 @@ const requestLogger = (options = {}) => asyncErrorHandler(async (req, res, next)
       boundEnd(chunk, ...rest);
     };
 
+    const actualLogRequestBody = typeof logRequestBody === 'function' ? !!logRequestBody(req) : logRequestBody;
+    const actualLogResponseBody = typeof logResponseBody === 'function' ? !!logResponseBody(req) : logResponseBody;
+
     const record = {
       url: req.path,
       method: req.method,
-      body: logRequestBody ? JSON.stringify(req.body) : null,
+      body: actualLogRequestBody ? JSON.stringify(req.body) : null,
       requestBodySize: JSON.stringify(req.body).length,
       headers: JSON.stringify(req.headers),
       params: JSON.stringify(req.params),
@@ -47,7 +50,7 @@ const requestLogger = (options = {}) => asyncErrorHandler(async (req, res, next)
         statusCode: res.statusCode,
         time,
         responseBodySize: JSON.stringify(res.locals.body || '').length,
-        responseBody: logResponseBody ? res.locals.body : null,
+        responseBody: actualLogResponseBody ? res.locals.body : null,
       });
       await model.create(record);
       if (logging && logging.enabled) {

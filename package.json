@@ -1,12 +1,12 @@
 {
   "name": "express-sequelize-logger",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "src/index.js",
   "author": "rovnyart",
   "license": "MIT",
-  "dependencies": {
-    "response-time": "^2.3.2",
-    "sequelize": "^6.3.5"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rovnyart/express-sequelize-logger"
   },
   "devDependencies": {
     "eslint": "^7.11.0",

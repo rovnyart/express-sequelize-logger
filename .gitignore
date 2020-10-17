@@ -1,4 +1,5 @@
 node_modules/
+yarn.lock
 
 # Ignore IDE configuration files
 .idea/ 

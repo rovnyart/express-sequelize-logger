@@ -4,6 +4,14 @@
   "main": "src/index.js",
   "author": "rovnyart",
   "license": "MIT",
+  "keywords": [
+    "express",
+    "sequelize",
+    "logger",
+    "request logs",
+    "requestLog",
+    "node"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rovnyart/express-sequelize-logger"

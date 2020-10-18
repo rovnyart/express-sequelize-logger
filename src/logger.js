@@ -11,6 +11,7 @@ const requestLogger = (options = {}) => asyncErrorHandler(async (req, res, next)
     logRequestBody = true,
     logResponseBody = true,
     logging = { enabled: true, logger: console.log }, // eslint-disable-line no-console
+    shouldThrowError = false,
   } = options;
   try {
     if (!sequelize) throw new Error('A sequelize instance must be passed');
@@ -59,6 +60,7 @@ const requestLogger = (options = {}) => asyncErrorHandler(async (req, res, next)
     });
   } catch (error) {
     console.log(`[express-sequelize-logger]: ${error}`); // eslint-disable-line no-console
+    if (shouldThrowError) throw error;
   }
 
   return next();

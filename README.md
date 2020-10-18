@@ -42,14 +42,14 @@ and insert all requests logs there.
 | method             | VARCHAR | Method name (GET/POST/PUT/DELETE etc)                                                                          |
 | url                | TEXT    | Request path                                                                                                   |
 | headers            | TEXT    | Request headers                                                                                                |
-| body               | TEXT    | Request body (can be disabled by `logRequestBody` option                                                       |
-| response_body               | TEXT    | Response body (can be disabled by `logResponseBody` option                                                       |
+| body               | TEXT    | Request body (can be disabled by `logRequestBody` option)                                                       |
+| response_body               | TEXT    | Response body (can be disabled by `logResponseBody` option)                                                       |
 | params             | TEXT    | URL params                                                                                                     |
 | query              | TEXT    | Query string                                                                                                   |
 | status_code        | INTEGER | Request status code                                                                                            |
 | time               | FLOAT   | Request time (ms)                                                                                              |
 | request_body_size  | INTEGER | Size of request body (bytes)                                                                                   |
-| response_body_size | INTEGER | Size of responses body (bytes)                                                                                 |
+| response_body_size | INTEGER | Size of response body (bytes)                                                                                 |
 
 ### Options
 
@@ -59,10 +59,11 @@ and insert all requests logs there.
 | tableName       | String           |          | request_logs                           | Log table name                                                                                                                 |
 | isUuidPk        | Boolean          |          | false                                  | If `true`, `id` column (primary key) will be of type `UUID(v4)`                                                                |
 | logRequestBody  | Boolean/function |          | true                                   | A boolean or function with signature `(req) => {}`, should return Boolean. Whether to log request bodies.                      |
-| logResponseBody | Boolean/function |          | true                                   | A boolean or function with signature `(req) => {}`, should return Boolean. Whether to log response bodies                      |
+| logResponseBody | Boolean/function |          | true                                   | A boolean or function with signature `(req) => {}`, should return Boolean. Whether to log response bodies.                      |
 | logging         | Object           |          | { enabled: true, logger: console.log } | Console logger options                                                                                                         |
 | logging.enabled | Boolean          |          | true                                   |                                                                                                                                |
 | logging.logger  | function         |          | console.log                            | A function with signature `(message) => {}`, should return String. For example, you can pass your `winston` logger method here |
+| shouldThrowError | Boolean         |          | false                           | Whether to throw errors from middleware. By default, errors will not be thrown, any errors would be console-logged. |
 
 ## License
 
